@@ -1,0 +1,156 @@
+/* ==========================================================================
+   NEXORA — CALM tema (dimuat setelah styles.css)
+   Terang  = mengikuti referensi CALM / KIT (Sage, Moss, Mist, Ivory, Sand · Inter)
+   Gelap   = "Malam Hutan": hijau arang + aksen sage terang
+   ========================================================================== */
+@font-face { font-family: "Inter"; font-weight: 300; font-style: normal; font-display: swap; src: url("fonts/Inter-300.woff") format("woff"); }
+
+:root[data-theme="light"] {
+  --bg: #F4EFE8; --surface: #F7F2EB; --surface-2: #EFE9E0; --surface-3: #E6DFD4;
+  --line: rgba(201,189,175,.5); --line-strong: #D6CCBF;
+  --text: #1F2B24; --muted: #6A736B; --faint: #868E85;
+  --teal: #6B7F6E; --on-teal: #FFFFFF;
+  --green: #5A7A60; --red: #B2635A; --amber: #94764E; --blue: #6F8C94; --purple: #85809C;
+  --teal-soft: rgba(107,127,110,.14); --green-soft: rgba(90,122,96,.14); --red-soft: rgba(178,99,90,.13);
+  --amber-soft: rgba(201,189,175,.38); --blue-soft: rgba(111,140,148,.14);
+  --sidebar-bg: #F4EFE8; --topbar-bg: rgba(244,239,232,.85); --nav-hover: #ECE5DB; --overlay: rgba(60,52,42,.35);
+  --neu: 8px 10px 24px rgba(184,168,148,.30), -8px -8px 20px rgba(255,255,255,.9);
+  --neu-sm: 4px 5px 12px rgba(184,168,148,.30), -4px -4px 10px rgba(255,255,255,.9);
+  --neu-in: inset 2px 3px 6px rgba(184,168,148,.28), inset -2px -2px 6px rgba(255,255,255,.85);
+  --card-edge: rgba(255,255,255,.75);
+  --focus: 0 0 0 3px rgba(107,127,110,.28);
+  --c1: #6B7F6E; --c2: #A7B8A7; --c3: #C9BDAF; --c4: #8FA5A0; --c5: #B8A48A; --c6: #D9E1D9;
+}
+:root:not([data-theme="light"]) {
+  --bg: #0E1411; --surface: #151D19; --surface-2: #1B2520; --surface-3: #243029;
+  --line: rgba(255,255,255,.07); --line-strong: #30403A;
+  --text: #E9EFE9; --muted: #A3B0A6; --faint: #7F8D83;
+  --teal: #8DBF98; --on-teal: #0C1710;
+  --green: #7FCB93; --red: #E58A80; --amber: #E0BD85; --blue: #86B7C9; --purple: #B3A6D9;
+  --teal-soft: rgba(141,191,152,.14); --green-soft: rgba(127,203,147,.13); --red-soft: rgba(229,138,128,.13);
+  --amber-soft: rgba(224,189,133,.12); --blue-soft: rgba(134,183,201,.13);
+  --sidebar-bg: #111915; --topbar-bg: rgba(14,20,17,.85); --nav-hover: #1A2420; --overlay: rgba(2,6,4,.7);
+  --neu: 8px 10px 24px rgba(0,0,0,.45), -6px -6px 18px rgba(255,255,255,.025);
+  --neu-sm: 4px 5px 12px rgba(0,0,0,.4), -3px -3px 9px rgba(255,255,255,.025);
+  --neu-in: inset 2px 3px 6px rgba(0,0,0,.4), inset -2px -2px 5px rgba(255,255,255,.03);
+  --card-edge: rgba(255,255,255,.05);
+  --focus: 0 0 0 3px rgba(141,191,152,.3);
+  --c1: #8DBF98; --c2: #E0BD85; --c3: #86B7C9; --c4: #E58A80; --c5: #B3A6D9; --c6: #5E8F6F;
+}
+:root { --r-sm: 12px; --r-md: 18px; --r-lg: 28px; --control-h: 46px; }
+
+body { font-weight: 400; background: var(--bg); }
+:root[data-theme="light"] body { background: radial-gradient(1200px 600px at 80% -10%, #FBF8F3, transparent), var(--bg); }
+
+/* Judul: ringan + renggang seperti "CALM / KIT" */
+.page-head h1 { font-weight: 300; font-size: 32px; letter-spacing: .01em; }
+.page-head p { color: var(--muted); }
+.brand b { font-weight: 300; letter-spacing: .32em; font-size: 18px; }
+.brand small, .workspace-label { letter-spacing: .14em; text-transform: uppercase; font-weight: 500; }
+.panel-title { font-size: 12px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+.panel-sub { color: var(--faint); }
+
+/* Kartu lembut (neumorphic) */
+.panel, .modal, .sidebar-status, .chat-bubble, .thesis-card, .insight-card, .top-category-card, .group-item {
+  border: 1px solid var(--card-edge);
+}
+.panel { border-radius: var(--r-lg); padding: var(--sp-6); box-shadow: var(--neu); background: var(--surface); }
+:root[data-theme="light"] .panel { background: linear-gradient(145deg, #F9F5EF, #F1EBE2); }
+.insight-card, .top-category-card, .thesis-card, .group-item, .sidebar-status { background: var(--surface-2); box-shadow: var(--neu-sm); }
+.modal { border-radius: var(--r-lg); box-shadow: 0 30px 80px rgba(0,0,0,.28); background: var(--surface); }
+
+/* Tombol pill */
+.btn { border-radius: 999px; padding: 0 var(--sp-5); background: var(--surface); border: 1px solid var(--line-strong); box-shadow: var(--neu-sm); font-weight: 500; }
+.btn:hover { border-color: var(--teal); }
+.btn-primary { background: var(--teal); border-color: var(--teal); color: var(--on-teal); box-shadow: 0 8px 18px rgba(107,127,110,.35); }
+.btn-ghost { background: transparent; box-shadow: none; }
+.btn-danger, .btn-amber { box-shadow: none; }
+.btn-small, .tx-actions .btn { border-radius: 999px; }
+.text-link { font-weight: 500; }
+
+/* Input pill */
+.select-control, .input-control { border-radius: 999px; padding: 0 var(--sp-5); background: var(--surface-2); border: 1px solid transparent; box-shadow: var(--neu-in); }
+.textarea-control { border-radius: 22px; background: var(--surface-2); border: 1px solid transparent; box-shadow: var(--neu-in); }
+.search-control .input-control { padding-left: 44px; }
+.select-control:focus, .input-control:focus, .textarea-control:focus { border-color: var(--teal); }
+
+/* Navigasi */
+.sidebar { border-right: 0; box-shadow: 10px 0 30px rgba(184,168,148,.14); }
+:root:not([data-theme="light"]) .sidebar { box-shadow: 10px 0 30px rgba(0,0,0,.25); }
+.nav-item { border-radius: 999px; min-height: 46px; font-weight: 500; }
+.nav-item.active { background: var(--teal); color: var(--on-teal); box-shadow: 0 8px 18px rgba(107,127,110,.3); }
+.nav-item.active .nav-icon { color: var(--on-teal); }
+.topbar { border-bottom: 0; }
+.icon-button, .top-avatar, .avatar { border-radius: 50%; box-shadow: var(--neu-sm); border: 1px solid var(--card-edge); }
+.avatar, .top-avatar, .profile-big-avatar { background: linear-gradient(135deg, #A7B8A7, #C9BDAF); color: #2A3A2E; }
+.status-dot.online { background: var(--teal); box-shadow: 0 0 0 4px var(--teal-soft); }
+
+/* Pilihan tema: Terang | Gelap */
+.theme-switch { display: inline-flex; padding: 3px; gap: 2px; border-radius: 999px; background: var(--surface-2); box-shadow: var(--neu-in); }
+.theme-switch button { display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 12px; border: 0; border-radius: 999px; background: transparent; color: var(--muted); font-size: var(--fs-sm); font-weight: 500; }
+.theme-switch .icon { width: 16px; height: 16px; }
+:root[data-theme="light"] .theme-switch [data-theme-set="light"],
+:root:not([data-theme="light"]) .theme-switch [data-theme-set="dark"] { background: var(--teal); color: var(--on-teal); box-shadow: var(--neu-sm); }
+
+/* Aksi cepat (dashboard) */
+.quick-actions { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--sp-3); margin: 0 0 var(--sp-4); }
+.quick-btn { display: flex; align-items: center; gap: var(--sp-3); padding: 10px 16px 10px 10px; border: 1px solid var(--card-edge); border-radius: 999px; background: var(--surface); box-shadow: var(--neu-sm); font-weight: 500; text-align: left; }
+.quick-btn:hover { border-color: var(--teal); }
+.quick-btn span { display: grid; place-items: center; width: 36px; height: 36px; flex: none; border-radius: 50%; background: var(--teal-soft); color: var(--teal); }
+.quick-btn:first-child span { background: var(--teal); color: var(--on-teal); }
+
+/* KPI, progres, tag */
+.kpi-value { font-weight: 500; letter-spacing: -.02em; }
+.kpi-symbol { border-radius: 50%; box-shadow: var(--neu-in); }
+.progress { height: 12px; background: var(--surface-3); box-shadow: var(--neu-in); }
+.progress span { background: linear-gradient(90deg, var(--c2), var(--teal)); }
+.progress.warn span { background: linear-gradient(90deg, var(--c3), var(--amber)); }
+.progress.danger span { background: var(--red); }
+.status-tag, .type-pill { font-weight: 500; }
+.table-wrap { border-radius: var(--r-md); border-color: var(--line); }
+.data-table th { background: var(--surface-2); font-weight: 500; letter-spacing: .04em; }
+.transaction-icon, .category-icon, .asset-symbol, .group-avatar, .setting-icon, .insight-symbol { border-radius: 50%; background: var(--teal-soft); color: var(--teal); }
+.chat-bubble { border-radius: 20px 20px 20px 6px; }
+.chat-message.mine .chat-bubble { border-radius: 20px 20px 6px 20px; background: var(--teal-soft); }
+
+/* Grafik */
+.chart-area { height: 240px; }
+.chart-grid { stroke: var(--line-strong); stroke-dasharray: 2 6; opacity: .7; }
+.line-income, .line-expense { stroke-width: 3; }
+.dot-income, .dot-expense { stroke: var(--surface); stroke-width: 3; }
+.chart-hit { cursor: pointer; }
+.chart-hit:hover { fill: var(--teal-soft); }
+.chart-summary { border-top-color: var(--line-strong); }
+.donut { width: 176px; height: 176px; filter: drop-shadow(0 6px 10px rgba(0,0,0,.08)); }
+.donut-center { font-weight: 500; }
+.category-name i { border-radius: 50%; }
+.legend-dot { width: 10px; height: 10px; }
+
+/* Notifikasi seperti referensi */
+.toast { display: flex; align-items: center; gap: 12px; border-radius: 20px; background: var(--surface); border: 1px solid var(--card-edge); box-shadow: var(--neu); }
+.toast::before { content: "✓"; display: grid; place-items: center; width: 28px; height: 28px; flex: none; border-radius: 50%; background: var(--teal); color: var(--on-teal); font-weight: 600; }
+.toast.error::before { content: "!"; background: var(--red); color: #fff; }
+.toast.success, .toast.error { border-color: var(--card-edge); }
+.preview-banner, .notice-box { border-radius: var(--r-md); }
+
+@media (max-width: 1150px) { .quick-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 800px) {
+  .panel { padding: var(--sp-5); }
+  .page-head h1 { font-size: 26px; }
+  .theme-switch button span { display: none; }
+  .theme-switch button { padding: 0 10px; }
+  .quick-btn { padding-right: 10px; font-size: var(--fs-sm); }
+  .main-area { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+  /* Navigasi bawah mengambang seperti referensi */
+  .mobile-nav { left: 12px; right: 12px; bottom: calc(10px + env(safe-area-inset-bottom)); padding: 8px; border: 1px solid var(--card-edge); border-radius: 28px; background: var(--surface); box-shadow: var(--neu); }
+  .mobile-nav button { position: relative; border-radius: 20px; }
+  .mobile-nav button.active { background: transparent; color: var(--teal); }
+  .mobile-nav button.active::after { content: ""; position: absolute; bottom: 2px; width: 5px; height: 5px; border-radius: 50%; background: var(--teal); }
+  .toast-root { bottom: calc(100px + env(safe-area-inset-bottom)); }
+}
+
+/* Logo FINANCE: varian terang/gelap mengikuti tema */
+.logo { display: block; width: auto; height: 30px; }
+.brand { padding-bottom: var(--sp-6); }
+.mobile-brand .logo { height: 22px; width: auto; }
+:root[data-theme="light"] .logo-on-dark, :root:not([data-theme="light"]) .logo-on-light { display: none; }
